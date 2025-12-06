@@ -1,4 +1,6 @@
 path_img1,path_img2,result
+./images/exp3/0032/before_image.png,./images/exp3/0032/generated_mammo.png,
+./images/exp3/0033/before_image.png,./images/exp3/0033/generated_mammo.png,
 ./images/exp3/0052/before_image.png,./images/exp3/0052/generated_mammo.png,
 ./images/exp3/0057/before_image.png,./images/exp3/0057/generated_mammo.png,
 ./images/exp3/0058/before_image.png,./images/exp3/0058/generated_mammo.png,
