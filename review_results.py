@@ -284,6 +284,30 @@ def run_app() -> None:
         path1 = str(row["path_img1"])
         if Path(path1).exists():
             st.image(path1, width="stretch")
+            info_path = Path(path1).parent / "info.txt"
+            if info_path.exists():
+                with open(info_path, "r") as f:
+                    lines = f.readlines()
+                info_dict = {}
+                for line in lines:
+                    if ":" in line:
+                        k, v = line.strip().split(":", 1)
+                        info_dict[k.strip()] = v.strip()
+                mapping = {
+                    "breast_density": "Densidad",
+                    "mass_shape": "Forma",
+                    "pathology": "Patología",
+                    "assessment": "BI-RADS",
+                    "view": "Vista",
+                    "mass_margins": "Margen de la masa",
+                }
+                show_dict = {}
+                subfolder = Path(path1).parent.name
+                show_dict["ID"] = subfolder
+                for k, v in mapping.items():
+                    if k in info_dict:
+                        show_dict[v] = info_dict[k]
+                st.write(show_dict)
         else:
             st.error(f"No se encontró la imagen: {path1}")
 
